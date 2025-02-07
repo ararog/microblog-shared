@@ -19,14 +19,14 @@ import (
 const _ = grpc.SupportPackageIsVersion9
 
 const (
-	FeedService_Ping_FullMethodName = "/microblog.rpc.v1.FeedService/Ping"
+	FeedService_GetPost_FullMethodName = "/microblog.rpc.v1.FeedService/GetPost"
 )
 
 // FeedServiceClient is the client API for FeedService service.
 //
 // For semantics around ctx use and closing/ending streaming RPCs, please refer to https://pkg.go.dev/google.golang.org/grpc/?tab=doc#ClientConn.NewStream.
 type FeedServiceClient interface {
-	Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error)
+	GetPost(ctx context.Context, in *GetPostRequest, opts ...grpc.CallOption) (*GetPostResponse, error)
 }
 
 type feedServiceClient struct {
@@ -37,10 +37,10 @@ func NewFeedServiceClient(cc grpc.ClientConnInterface) FeedServiceClient {
 	return &feedServiceClient{cc}
 }
 
-func (c *feedServiceClient) Ping(ctx context.Context, in *PingRequest, opts ...grpc.CallOption) (*PingResponse, error) {
+func (c *feedServiceClient) GetPost(ctx context.Context, in *GetPostRequest, opts ...grpc.CallOption) (*GetPostResponse, error) {
 	cOpts := append([]grpc.CallOption{grpc.StaticMethod()}, opts...)
-	out := new(PingResponse)
-	err := c.cc.Invoke(ctx, FeedService_Ping_FullMethodName, in, out, cOpts...)
+	out := new(GetPostResponse)
+	err := c.cc.Invoke(ctx, FeedService_GetPost_FullMethodName, in, out, cOpts...)
 	if err != nil {
 		return nil, err
 	}
@@ -51,7 +51,7 @@ func (c *feedServiceClient) Ping(ctx context.Context, in *PingRequest, opts ...g
 // All implementations must embed UnimplementedFeedServiceServer
 // for forward compatibility.
 type FeedServiceServer interface {
-	Ping(context.Context, *PingRequest) (*PingResponse, error)
+	GetPost(context.Context, *GetPostRequest) (*GetPostResponse, error)
 	mustEmbedUnimplementedFeedServiceServer()
 }
 
@@ -62,8 +62,8 @@ type FeedServiceServer interface {
 // pointer dereference when methods are called.
 type UnimplementedFeedServiceServer struct{}
 
-func (UnimplementedFeedServiceServer) Ping(context.Context, *PingRequest) (*PingResponse, error) {
-	return nil, status.Errorf(codes.Unimplemented, "method Ping not implemented")
+func (UnimplementedFeedServiceServer) GetPost(context.Context, *GetPostRequest) (*GetPostResponse, error) {
+	return nil, status.Errorf(codes.Unimplemented, "method GetPost not implemented")
 }
 func (UnimplementedFeedServiceServer) mustEmbedUnimplementedFeedServiceServer() {}
 func (UnimplementedFeedServiceServer) testEmbeddedByValue()                     {}
@@ -86,20 +86,20 @@ func RegisterFeedServiceServer(s grpc.ServiceRegistrar, srv FeedServiceServer) {
 	s.RegisterService(&FeedService_ServiceDesc, srv)
 }
 
-func _FeedService_Ping_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
-	in := new(PingRequest)
+func _FeedService_GetPost_Handler(srv interface{}, ctx context.Context, dec func(interface{}) error, interceptor grpc.UnaryServerInterceptor) (interface{}, error) {
+	in := new(GetPostRequest)
 	if err := dec(in); err != nil {
 		return nil, err
 	}
 	if interceptor == nil {
-		return srv.(FeedServiceServer).Ping(ctx, in)
+		return srv.(FeedServiceServer).GetPost(ctx, in)
 	}
 	info := &grpc.UnaryServerInfo{
 		Server:     srv,
-		FullMethod: FeedService_Ping_FullMethodName,
+		FullMethod: FeedService_GetPost_FullMethodName,
 	}
 	handler := func(ctx context.Context, req interface{}) (interface{}, error) {
-		return srv.(FeedServiceServer).Ping(ctx, req.(*PingRequest))
+		return srv.(FeedServiceServer).GetPost(ctx, req.(*GetPostRequest))
 	}
 	return interceptor(ctx, in, info, handler)
 }
@@ -112,8 +112,8 @@ var FeedService_ServiceDesc = grpc.ServiceDesc{
 	HandlerType: (*FeedServiceServer)(nil),
 	Methods: []grpc.MethodDesc{
 		{
-			MethodName: "Ping",
-			Handler:    _FeedService_Ping_Handler,
+			MethodName: "GetPost",
+			Handler:    _FeedService_GetPost_Handler,
 		},
 	},
 	Streams:  []grpc.StreamDesc{},
