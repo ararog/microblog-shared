@@ -4,7 +4,7 @@ option java_multiple_files = true;
 option java_package = "io.ararog.microblog.rpc";
 option java_outer_classname = "UserProto";
 option objc_class_prefix = "HLW";
-option go_package = "github.com/ararog/microblog/rpc;rpc";
+option go_package = "github.com/ararog/microblog-rpc;main";
 
 package microblog.rpc.v1;
 

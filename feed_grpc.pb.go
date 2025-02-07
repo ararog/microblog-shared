@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: feed.proto
 
-package rpc
+package main
 
 import (
 	context "context"
