@@ -4,7 +4,7 @@
 // - protoc             v5.29.3
 // source: media.proto
 
-package main
+package rpc
 
 import (
 	context "context"

@@ -1,4 +1,4 @@
-module github.com/ararog/microblog-rpc
+module github.com/ararog/microblog-shared
 
 go 1.23.5
 
