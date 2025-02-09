@@ -1,0 +1,48 @@
+syntax = "proto3";
+
+option objc_class_prefix = "HLW";
+option go_package = "github.com/ararog/microblog-shared;rpc";
+
+import "proto/user.proto";
+import "proto/profile.proto";
+import "proto/feed.proto";
+import "proto/media.proto";
+import "proto/following.proto";
+import "proto/follower.proto";
+import "proto/notification.proto";
+import "proto/search.proto";
+
+package microblog.rpc.v1;
+
+service UsersService {
+  rpc GetUsers (GetUsersRequest) returns (GetUsersResponse) {}
+}
+
+service ProfilesService {
+  rpc GetProfileByUserId (GetProfileByUserIdRequest) returns (GetProfileByUserIdResponse) {}
+  rpc CreateProfile (CreateProfileRequest) returns (CreateProfileResponse) {}
+}
+
+service FeedService {
+  rpc Ping (PingRequest) returns (PingResponse) {}
+}
+
+service FollowerService {
+  rpc Unfollow (UnfollowRequest) returns (UnfollowResponse) {}
+}
+
+service FollowingService {
+  rpc Follow (FollowRequest) returns (FollowResponse) {}
+}
+
+service NotificationService {
+  rpc Notify (NotifyRequest) returns (NotifyResponse) {}
+}
+
+service MediasService {
+  rpc GetProfilesMedias (GetProfilesMediasRequest) returns (GetProfilesMediasResponse) {}
+}
+
+service SearchService {
+  rpc Search (SearchRequest) returns (SearchResponse) {}
+}

@@ -1,16 +1,9 @@
 syntax = "proto3";
 
-option java_multiple_files = true;
-option java_package = "io.ararog.microblog.rpc";
-option java_outer_classname = "SearchProto";
 option objc_class_prefix = "HLW";
 option go_package = "github.com/ararog/microblog-shared;rpc";
 
 package microblog.rpc.v1;
-
-service SearchService {
-  rpc Search (SearchRequest) returns (SearchResponse) {}
-}
 
 message SearchRequest {
   string message = 1;

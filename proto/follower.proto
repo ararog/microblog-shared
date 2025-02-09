@@ -1,0 +1,14 @@
+syntax = "proto3";
+
+option objc_class_prefix = "HLW";
+option go_package = "github.com/ararog/microblog-shared;rpc";
+
+package microblog.rpc.v1;
+
+message UnfollowRequest {
+  string message = 1;
+}  
+
+message UnfollowResponse {
+  string message = 1;
+}
