@@ -3,14 +3,14 @@ syntax = "proto3";
 option objc_class_prefix = "HLW";
 option go_package = "github.com/ararog/microblog-shared;rpc";
 
-import "proto/user.proto";
-import "proto/profile.proto";
-import "proto/feed.proto";
-import "proto/media.proto";
-import "proto/following.proto";
-import "proto/follower.proto";
-import "proto/notification.proto";
-import "proto/search.proto";
+import "proto/microblog/rpc/v1/user.proto";
+import "proto/microblog/rpc/v1/profile.proto";
+import "proto/microblog/rpc/v1/feed.proto";
+import "proto/microblog/rpc/v1/media.proto";
+import "proto/microblog/rpc/v1/following.proto";
+import "proto/microblog/rpc/v1/follower.proto";
+import "proto/microblog/rpc/v1/notification.proto";
+import "proto/microblog/rpc/v1/search.proto";
 
 package microblog.rpc.v1;
 
